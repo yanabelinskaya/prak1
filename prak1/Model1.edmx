@@ -1,0 +1,210 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="Хранилище PrakticaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+        <EntityType Name="Bakery">
+          <Key>
+            <PropertyRef Name="bakery_id" />
+          </Key>
+          <Property Name="bakery_id" Type="int" Nullable="false" />
+          <Property Name="bakeryName" Type="varchar" MaxLength="100" />
+          <Property Name="bakeryAddress" Type="varchar" MaxLength="255" />
+          <Property Name="rating" Type="decimal" Precision="3" Scale="2" />
+        </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="delivery_id" />
+          </Key>
+          <Property Name="delivery_id" Type="int" Nullable="false" />
+          <Property Name="deliveryDate" Type="date" />
+          <Property Name="product_id" Type="int" />
+          <Property Name="quantity" Type="int" />
+          <Property Name="deliveryAddress" Type="varchar" MaxLength="255" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="int" Nullable="false" />
+          <Property Name="productName" Type="varchar" MaxLength="100" />
+          <Property Name="productDescription" Type="varchar" MaxLength="255" />
+          <Property Name="price" Type="decimal" Precision="10" Scale="2" />
+          <Property Name="bakery_id" Type="int" />
+        </EntityType>
+        <Association Name="FK__Delivery__produc__3C69FB99">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Product__bakery___398D8EEE">
+          <End Role="Bakery" Type="Self.Bakery" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bakery">
+              <PropertyRef Name="bakery_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="bakery_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="Хранилище PrakticaModelContainer">
+          <EntitySet Name="Bakery" EntityType="Self.Bakery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Delivery" EntityType="Self.Delivery" Schema="dbo" store:Type="Tables" />
+          <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
+          <AssociationSet Name="FK__Delivery__produc__3C69FB99" Association="Self.FK__Delivery__produc__3C69FB99">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Product__bakery___398D8EEE" Association="Self.FK__Product__bakery___398D8EEE">
+            <End Role="Bakery" EntitySet="Bakery" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="PrakticaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+        <EntityType Name="Bakery">
+          <Key>
+            <PropertyRef Name="bakery_id" />
+          </Key>
+          <Property Name="bakery_id" Type="Int32" Nullable="false" />
+          <Property Name="bakeryName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="bakeryAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="rating" Type="Decimal" Precision="3" Scale="2" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Product__bakery___398D8EEE" FromRole="Bakery" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Delivery">
+          <Key>
+            <PropertyRef Name="delivery_id" />
+          </Key>
+          <Property Name="delivery_id" Type="Int32" Nullable="false" />
+          <Property Name="deliveryDate" Type="DateTime" Precision="0" />
+          <Property Name="product_id" Type="Int32" />
+          <Property Name="quantity" Type="Int32" />
+          <Property Name="deliveryAddress" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <NavigationProperty Name="Product" Relationship="Self.FK__Delivery__produc__3C69FB99" FromRole="Delivery" ToRole="Product" />
+        </EntityType>
+        <EntityType Name="Product">
+          <Key>
+            <PropertyRef Name="product_id" />
+          </Key>
+          <Property Name="product_id" Type="Int32" Nullable="false" />
+          <Property Name="productName" Type="String" MaxLength="100" FixedLength="false" Unicode="false" />
+          <Property Name="productDescription" Type="String" MaxLength="255" FixedLength="false" Unicode="false" />
+          <Property Name="price" Type="Decimal" Precision="10" Scale="2" />
+          <Property Name="bakery_id" Type="Int32" />
+          <NavigationProperty Name="Bakery" Relationship="Self.FK__Product__bakery___398D8EEE" FromRole="Product" ToRole="Bakery" />
+          <NavigationProperty Name="Delivery" Relationship="Self.FK__Delivery__produc__3C69FB99" FromRole="Product" ToRole="Delivery" />
+        </EntityType>
+        <Association Name="FK__Product__bakery___398D8EEE">
+          <End Role="Bakery" Type="Self.Bakery" Multiplicity="0..1" />
+          <End Role="Product" Type="Self.Product" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Bakery">
+              <PropertyRef Name="bakery_id" />
+            </Principal>
+            <Dependent Role="Product">
+              <PropertyRef Name="bakery_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <Association Name="FK__Delivery__produc__3C69FB99">
+          <End Role="Product" Type="Self.Product" Multiplicity="0..1" />
+          <End Role="Delivery" Type="Self.Delivery" Multiplicity="*" />
+          <ReferentialConstraint>
+            <Principal Role="Product">
+              <PropertyRef Name="product_id" />
+            </Principal>
+            <Dependent Role="Delivery">
+              <PropertyRef Name="product_id" />
+            </Dependent>
+          </ReferentialConstraint>
+        </Association>
+        <EntityContainer Name="PrakticaEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="Bakery" EntityType="Self.Bakery" />
+          <EntitySet Name="Delivery" EntityType="Self.Delivery" />
+          <EntitySet Name="Product" EntityType="Self.Product" />
+          <AssociationSet Name="FK__Product__bakery___398D8EEE" Association="Self.FK__Product__bakery___398D8EEE">
+            <End Role="Bakery" EntitySet="Bakery" />
+            <End Role="Product" EntitySet="Product" />
+          </AssociationSet>
+          <AssociationSet Name="FK__Delivery__produc__3C69FB99" Association="Self.FK__Delivery__produc__3C69FB99">
+            <End Role="Product" EntitySet="Product" />
+            <End Role="Delivery" EntitySet="Delivery" />
+          </AssociationSet>
+        </EntityContainer>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PrakticaModelContainer" CdmEntityContainer="PrakticaEntities">
+          <EntitySetMapping Name="Bakery">
+            <EntityTypeMapping TypeName="PrakticaModel.Bakery">
+              <MappingFragment StoreEntitySet="Bakery">
+                <ScalarProperty Name="bakery_id" ColumnName="bakery_id" />
+                <ScalarProperty Name="bakeryName" ColumnName="bakeryName" />
+                <ScalarProperty Name="bakeryAddress" ColumnName="bakeryAddress" />
+                <ScalarProperty Name="rating" ColumnName="rating" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Delivery">
+            <EntityTypeMapping TypeName="PrakticaModel.Delivery">
+              <MappingFragment StoreEntitySet="Delivery">
+                <ScalarProperty Name="delivery_id" ColumnName="delivery_id" />
+                <ScalarProperty Name="deliveryDate" ColumnName="deliveryDate" />
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="quantity" ColumnName="quantity" />
+                <ScalarProperty Name="deliveryAddress" ColumnName="deliveryAddress" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+          <EntitySetMapping Name="Product">
+            <EntityTypeMapping TypeName="PrakticaModel.Product">
+              <MappingFragment StoreEntitySet="Product">
+                <ScalarProperty Name="product_id" ColumnName="product_id" />
+                <ScalarProperty Name="productName" ColumnName="productName" />
+                <ScalarProperty Name="productDescription" ColumnName="productDescription" />
+                <ScalarProperty Name="price" ColumnName="price" />
+                <ScalarProperty Name="bakery_id" ColumnName="bakery_id" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="false" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="true" />
+        <DesignerProperty Name="UseLegacyProvider" Value="false" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="Нет" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams></Diagrams>
+  </Designer>
+</edmx:Edmx>

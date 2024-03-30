@@ -1,0 +1,16 @@
+﻿<Window x:Class="prak1.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:prak1"
+        mc:Ignorable="d"
+        Title="Bakery" Height="450" Width="800">
+    <Grid>
+        <Button Content="Bakery" HorizontalAlignment="Left" Height="83" Margin="0,134,0,0" VerticalAlignment="Top" Width="304" BorderBrush="#FFE150CE" Background="#FFE69FFF" Foreground="White" FontSize="48" Click="BakeryClick"/>
+        <Button Content="Products" HorizontalAlignment="Right" Height="83" Margin="96,134,0,0" VerticalAlignment="Top" Width="304" BorderBrush="#FFE150CE" Background="#FFE69FFF" Foreground="White" FontSize="48" Click="ProductsClick"/>
+        <Button Content="Delivery" HorizontalAlignment="Center" Height="83" Margin="0,281,0,0" VerticalAlignment="Top" Width="304" BorderBrush="#FFE150CE" Background="#FFE69FFF" Foreground="White" FontSize="48" Click="DeliveryClick"/>
+        <Frame x:Name="PageFrame"/>
+        <Button Content="Назад" HorizontalAlignment="Left" Height="53" Margin="0,360,0,0" VerticalAlignment="Top" Width="113" FontSize="24" Background="#FFB24242" Foreground="#FFE2D7D7" Click="Button_Click"/>
+    </Grid>
+</Window>
