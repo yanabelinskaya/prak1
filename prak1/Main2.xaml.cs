@@ -12,18 +12,29 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
-using prak1.PrakticaDataSetTableAdapters;
 
 namespace prak1
 {
-    public partial class Page2 : Page
+    /// <summary>
+    /// Логика взаимодействия для Main2.xaml
+    /// </summary>
+    public partial class Main2 : Page
     {
-        //датасет
-        ProductTableAdapter products = new ProductTableAdapter();
-        public Page2()
+        public Main2()
         {
             InitializeComponent();
-            ProductsDataGrid.ItemsSource = products.GetData();
+        }
+        private void BakeryClick(object sender, RoutedEventArgs e)
+        {
+            PageFrame.Content = new Page4();
+        }
+        private void ProductsClick(object sender, RoutedEventArgs e)
+        {
+            PageFrame.Content = new Page5();
+        }
+        private void DeliveryClick(object sender, RoutedEventArgs e)
+        {
+            PageFrame.Content = new Page6();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)

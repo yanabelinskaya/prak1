@@ -19,19 +19,18 @@ namespace prak1
     public partial class Page3 : Page
     {
         //датасет
-        /*DeliveryTableAdapter delivery = new DeliveryTableAdapter();
+        DeliveryTableAdapter delivery = new DeliveryTableAdapter();
         public Page3()
         {
             InitializeComponent();
             DeliveryDataGrid.ItemsSource = delivery.GetData();
-        }*/
-
-        //ef
-        private PrakticaEntities context = new PrakticaEntities();
-        public Page3()
-        {
-            InitializeComponent();
-            DeliveryDgr.ItemsSource = context.Delivery.ToList();
         }
+        private void Button_Click(object sender, RoutedEventArgs e)
+        {
+            MainWindow mainWindow = new MainWindow();
+            mainWindow.Show();
+            Window.GetWindow(this).Close();
+        }
+
     }
 }

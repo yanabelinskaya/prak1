@@ -7,10 +7,8 @@
         mc:Ignorable="d"
         Title="Bakery" Height="450" Width="800">
     <Grid>
-        <Button Content="Bakery" HorizontalAlignment="Left" Height="83" Margin="0,134,0,0" VerticalAlignment="Top" Width="304" BorderBrush="#FFE150CE" Background="#FFE69FFF" Foreground="White" FontSize="48" Click="BakeryClick"/>
-        <Button Content="Products" HorizontalAlignment="Right" Height="83" Margin="96,134,0,0" VerticalAlignment="Top" Width="304" BorderBrush="#FFE150CE" Background="#FFE69FFF" Foreground="White" FontSize="48" Click="ProductsClick"/>
-        <Button Content="Delivery" HorizontalAlignment="Center" Height="83" Margin="0,281,0,0" VerticalAlignment="Top" Width="304" BorderBrush="#FFE150CE" Background="#FFE69FFF" Foreground="White" FontSize="48" Click="DeliveryClick"/>
-        <Frame x:Name="PageFrame"/>
-        <Button Content="Назад" HorizontalAlignment="Left" Height="53" Margin="0,360,0,0" VerticalAlignment="Top" Width="113" FontSize="24" Background="#FFB24242" Foreground="#FFE2D7D7" Click="Button_Click"/>
+        <Button Content="EntityFramework" HorizontalAlignment="Left" Height="75"  VerticalAlignment="Top" Width="380" Background="#FF9468CA" FontSize="24" Click="ClickEntityFramework"/>
+        <Button Content="DataSet" HorizontalAlignment="Right" Height="75" VerticalAlignment="Top" Width="380" Background="#FF9468CA" FontSize="24" Click="ClickDataSet"/>
+        <Frame x:Name="PageFrame" Foreground="Black" Margin="5,80,0,37" />
     </Grid>
 </Window>

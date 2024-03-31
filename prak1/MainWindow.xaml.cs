@@ -21,23 +21,18 @@ namespace prak1
         {
             InitializeComponent();
         }
-        private void BakeryClick(object sender, RoutedEventArgs e)
+        private void ClickEntityFramework(object sender, RoutedEventArgs e)
         {
-            PageFrame.Content = new Page1();
+            PageFrame.Content = new Main2();
+
         }
-        private void ProductsClick(object sender, RoutedEventArgs e)
+        private void ClickDataSet(object sender, RoutedEventArgs e)
         {
-            PageFrame.Content = new Page2();
-        }
-        private void DeliveryClick(object sender, RoutedEventArgs e)
-        {
-            PageFrame.Content = new Page3();
+            PageFrame.Content = new Main();
         }
 
         private void Button_Click(object sender, RoutedEventArgs e)
         {
-            MainWindow mainWindow = new MainWindow();
-            mainWindow.Show();
             Window.GetWindow(this).Close();
         }
     }

@@ -9,7 +9,12 @@
       Title="Page3">
 
     <Grid Background="#FFFFFEFE">
-        <DataGrid x:Name="DeliveryDataGrid"/>
-        <DataGrid x:Name="DeliveryDgr"/>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="DeliveryDataGrid" Height="300" Margin="0,0,0,150"/>
+        <Button Content="Назад" HorizontalAlignment="Left" Height="53" Margin="0,360,0,0" VerticalAlignment="Top" Width="113" FontSize="24" Background="#FFB24242" Foreground="#FFE2D7D7" Click="Button_Click"/>
+       
     </Grid>
 </Page>

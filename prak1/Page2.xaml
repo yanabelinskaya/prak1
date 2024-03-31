@@ -5,11 +5,12 @@
       xmlns:d="http://schemas.microsoft.com/expression/blend/2008" 
       xmlns:local="clr-namespace:prak1"
       mc:Ignorable="d" 
-      d:DesignHeight="450" d:DesignWidth="800"
+      d:DesignHeight="320" d:DesignWidth="800"
       Title="Page2">
 
     <Grid Background="#FFFFFEFE">
-        <DataGrid x:Name="ProductsDataGrid"/>
-        <DataGrid x:Name="ProductsDgr"/>
+        <DataGrid x:Name="ProductsDataGrid" Height="200" Margin="0,0,0,150"/>
+        <Button Content="Назад" HorizontalAlignment="Left" Height="53" Margin="0,360,0,0" VerticalAlignment="Top" Width="113" FontSize="24" Background="#FFB24242" Foreground="#FFE2D7D7" Click="Button_Click"/>
+        
     </Grid>
 </Page>
