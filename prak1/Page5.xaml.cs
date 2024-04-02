@@ -34,7 +34,6 @@ namespace prak1
         {
             Product c = new Product();
             c.productName = NameTbx1.Text;
-            c.productDescription = NameTbx2.Text;
 
             context.Product.Add(c);
 
@@ -49,7 +48,6 @@ namespace prak1
                 var selected = ProductsDgr.SelectedItem as Product;
 
                 selected.productName = NameTbx1.Text;
-                selected.productDescription = NameTbx2.Text;
                 context.SaveChanges();
                 ProductsDgr.ItemsSource = context.Product.ToList();
             }

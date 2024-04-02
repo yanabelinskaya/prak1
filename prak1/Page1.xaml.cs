@@ -25,6 +25,9 @@ namespace prak1
         {
             InitializeComponent();
             BakeryDataGrid.ItemsSource = bakery.GetData();
+            bakeryCbx.ItemsSource = bakery.GetData();
+            bakeryCbx.DisplayMemberPath = "название_пекарни";
+
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -33,22 +36,23 @@ namespace prak1
             Window.GetWindow(this).Close();
         }
 
-        private void Button_Click1(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            bakery.InsertQuery(NameTbx1.Text);
+            BakeryDataGrid.ItemsSource = bakery.SearchByName(Searchtxt.Text);
+        }
+
+        private void BakeryCbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (bakeryCbx.SelectedItem != null)
+            {
+                var bakery_id = (int)(bakeryCbx.SelectedItem as DataRowView).Row["название_пекарни"];
+                BakeryDataGrid.ItemsSource= bakery.FilterByProduct(bakery_id);
+            }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
             BakeryDataGrid.ItemsSource = bakery.GetData();
-        }
-
-        private void Button_Click2(object sender, RoutedEventArgs e)
-        {
-            object bakery_id = (BakeryDataGrid.SelectedItem as DataRowView).Row[0];
-            bakery.UpdateQuery(NameTbx1.Text, Convert.ToInt32(bakery_id));
-        }
-
-        private void Button_Click3(object sender, RoutedEventArgs e)
-        {
-            object bakery_id = (BakeryDataGrid.SelectedItem as DataRowView).Row[0];
-            bakery.DeleteQuery(Convert.ToInt32(bakery_id));
         }
     }
 }

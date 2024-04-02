@@ -11,7 +11,8 @@
     <Grid Background="White">
         <Button Content="Bakery" HorizontalAlignment="Left" Height="83"  VerticalAlignment="Top" Width="304" BorderBrush="#FFE150CE" Background="#FFE69FFF" Foreground="White" FontSize="48" Click="BakeryClick"/>
         <Button Content="Products" HorizontalAlignment="Right" Height="83"  VerticalAlignment="Top" Width="304" BorderBrush="#FFE150CE" Background="#FFE69FFF" Foreground="White" FontSize="48" Click="ProductsClick"/>
-        <Button Content="Delivery" HorizontalAlignment="Center" Height="83"  VerticalAlignment="Center" Width="304" BorderBrush="#FFE150CE" Background="#FFE69FFF" Foreground="White" FontSize="48" Click="DeliveryClick"/>
+        <Button Content="Delivery" HorizontalAlignment="Left" Height="83" VerticalAlignment="Center" Width="304" BorderBrush="#FFE150CE" Background="#FFE69FFF" Foreground="White" FontSize="48" Click="DeliveryClick"/>
+        <Button Content="Несколько таблиц в одной" HorizontalAlignment="Right" Height="83" VerticalAlignment="Center" Width="304" BorderBrush="#FFE150CE" Background="#FFE69FFF" Foreground="White" FontSize="22" Click="NeskolkoClick"/>
         <Button Content="Назад" HorizontalAlignment="Left" Height="53" Margin="0,220,0,0" VerticalAlignment="Top" Width="113" FontSize="24" Background="#FFB24242" Foreground="#FFE2D7D7" Click="Button_Click"/>
         <Frame x:Name="PageFrame" Foreground="Black"/>
     </Grid>

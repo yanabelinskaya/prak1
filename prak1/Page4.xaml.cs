@@ -35,7 +35,6 @@ namespace prak1
         {
             Bakery c = new Bakery();
             c.bakeryName = NameTbx1.Text;
-            c.bakeryAddress = NameTbx2.Text;
 
             context.Bakery.Add(c);
 
@@ -50,7 +49,6 @@ namespace prak1
                 var selected = BakeryDgr.SelectedItem as Bakery;
 
                 selected.bakeryName = NameTbx1.Text;
-                selected.bakeryAddress = NameTbx2.Text;
        
                 context.SaveChanges();
                 BakeryDgr.ItemsSource = context.Bakery.ToList();
@@ -75,8 +73,8 @@ namespace prak1
                 var selected = BakeryDgr.SelectedItem as Bakery;
 
                 NameTbx1.Text = selected.bakeryName;
-                NameTbx2.Text = selected.bakeryAddress;
             }
         }
+
     }
 }

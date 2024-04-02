@@ -12,40 +12,30 @@ using System.Windows.Media;
 using System.Windows.Media.Imaging;
 using System.Windows.Navigation;
 using System.Windows.Shapes;
+using prak1.PrakticaDataSetTableAdapters;
 
 namespace prak1
 {
-    /// <summary>
-    /// Логика взаимодействия для Main.xaml
-    /// </summary>
-    public partial class Main : Page
+    public partial class Page11 : Page
     {
-        public Main()
+        ProductTableAdapter product = new ProductTableAdapter();
+        public Page11()
         {
             InitializeComponent();
+            ProductDgr.ItemsSource = product.GetFullInfo();
         }
-        private void BakeryClick(object sender, RoutedEventArgs e)
+        private void Window_Loaded(object sender, RoutedEventArgs e)
         {
-            PageFrame.Content = new Page1();
+            ProductDgr.Columns[0].Visibility = Visibility.Collapsed;
+            ProductDgr.Columns[4].Visibility = Visibility.Collapsed;
+            ProductDgr.Columns[8].Visibility = Visibility.Collapsed;
+            ProductDgr.Columns[12].Visibility = Visibility.Collapsed;
         }
-        private void ProductsClick(object sender, RoutedEventArgs e)
-        {
-            PageFrame.Content = new Page2();
-        }
-        private void DeliveryClick(object sender, RoutedEventArgs e)
-        {
-            PageFrame.Content = new Page3();
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Window.GetWindow(this).Close();
-        }
-        private void NeskolkoClick(object sender, RoutedEventArgs e)
-        {
-            PageFrame.Content = new Page11();
         }
     }
 }

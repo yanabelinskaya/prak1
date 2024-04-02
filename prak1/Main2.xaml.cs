@@ -43,5 +43,10 @@ namespace prak1
             mainWindow.Show();
             Window.GetWindow(this).Close();
         }
+
+        private void NeskolkoClick(object sender, RoutedEventArgs e)
+        {
+            PageFrame.Content = new Page8();
+        }
     }
 }

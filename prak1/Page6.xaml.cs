@@ -33,7 +33,6 @@ namespace prak1
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
             Delivery c = new Delivery();
-            c.deliveryAddress = NameTbx2.Text;
 
             context.Delivery.Add(c);
 

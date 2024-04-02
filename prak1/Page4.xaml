@@ -9,15 +9,20 @@
       Title="Page4">
 
     <Grid Background="#FFFFFEFE">
-        <DataGrid x:Name="BakeryDgr" Height="200" VerticalAlignment="Top" SelectionChanged="BakeryDgr_SelectionChanged"/>
+       
+        <Grid.RowDefinitions>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="*"/>
+        </Grid.RowDefinitions>
+        <DataGrid x:Name="BakeryDgr" Height="200" VerticalAlignment="Top" SelectionChanged="BakeryDgr_SelectionChanged" />
+        <TextBox x:Name="NameTbx1" Height="30" Text="BakeryName" Grid.Row="1" Margin="0,0,0,10" VerticalAlignment="Top"/>
 
-        <Button Content="Назад" HorizontalAlignment="Left" Height="53" VerticalAlignment="Bottom" Width="113" FontSize="24" Background="#FFB24242" Foreground="#FFE2D7D7" Click="Button_Click"/>
-        <TextBox x:Name="NameTbx1" Height="30"  Text="Столбец 1" HorizontalAlignment="Left" Margin="0,205,0,85" Width="222"/>
-        <TextBox x:Name="NameTbx2" Height="30"  Text="Столбец 2" HorizontalAlignment="Center" Margin="0,205,0,85" Width="222"/>
-        <TextBox x:Name="NameTbx3" Height="30"  Text="Столбец 3" HorizontalAlignment="Right" Margin="0,205,0,85" Width="222"/>
-
-        <Button Content="Добавление данных" HorizontalAlignment="Left" Height="53" VerticalAlignment="Bottom" Width="179" FontSize="14" Background="#FFB24242" Foreground="#FFE2D7D7" Click="Button_Click1" Margin="221,0,0,0"/>
-        <Button Content="Изменение данных" HorizontalAlignment="Left" Height="53"  VerticalAlignment="Bottom" Width="179" FontSize="14" Background="#FFB24242" Foreground="#FFE2D7D7" Click="Button_Click2" Margin="420,0,0,0"/>
-        <Button Content="Удаление данных" HorizontalAlignment="Right" Height="53"  VerticalAlignment="Bottom" Width="179" FontSize="14" Background="#FFB24242" Foreground="#FFE2D7D7" Click="Button_Click3"/>
+        <!-- Кнопки -->
+        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom">
+            <Button Content="Назад" Width="113" FontSize="24" Background="#FFB24242" Foreground="#FFE2D7D7" Margin="5" Click="Button_Click"/>
+            <Button Content="Добавление данных" Width="179" FontSize="14" Background="#FFB24242" Foreground="#FFE2D7D7" Margin="5" />
+            <Button Content="Изменение данных" Width="179" FontSize="14" Background="#FFB24242" Foreground="#FFE2D7D7" Margin="5" />
+            <Button Content="Удаление данных" Width="179" FontSize="14" Background="#FFB24242" Foreground="#FFE2D7D7" Margin="5"/>
+        </StackPanel>
     </Grid>
 </Page>

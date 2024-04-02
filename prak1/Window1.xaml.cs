@@ -27,7 +27,6 @@ namespace prak1
 
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
-            bakery.InsertQuery(NameTbx1.Text);
             BakeryDataGrid.ItemsSource = bakery.GetData();
 
         }

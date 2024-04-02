@@ -16,36 +16,21 @@ using System.Windows.Shapes;
 namespace prak1
 {
     /// <summary>
-    /// Логика взаимодействия для Main.xaml
+    /// Логика взаимодействия для Page10.xaml
     /// </summary>
-    public partial class Main : Page
+    public partial class Page10 : Page
     {
-        public Main()
+        private PrakticaEntities context = new PrakticaEntities();
+        public Page10()
         {
             InitializeComponent();
+            DeliveryDgr.ItemsSource = context.Delivery.ToList();
         }
-        private void BakeryClick(object sender, RoutedEventArgs e)
-        {
-            PageFrame.Content = new Page1();
-        }
-        private void ProductsClick(object sender, RoutedEventArgs e)
-        {
-            PageFrame.Content = new Page2();
-        }
-        private void DeliveryClick(object sender, RoutedEventArgs e)
-        {
-            PageFrame.Content = new Page3();
-        }
-
         private void Button_Click(object sender, RoutedEventArgs e)
         {
             MainWindow mainWindow = new MainWindow();
             mainWindow.Show();
             Window.GetWindow(this).Close();
-        }
-        private void NeskolkoClick(object sender, RoutedEventArgs e)
-        {
-            PageFrame.Content = new Page11();
         }
     }
 }
