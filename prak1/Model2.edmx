@@ -4,7 +4,7 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-    <Schema Namespace="Хранилище PrakticaModel" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
+      <Schema Namespace="Хранилище PrakticaModel1" Provider="System.Data.SqlClient" ProviderManifestToken="2012" Alias="Self" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm/ssdl">
         <EntityType Name="Bakery">
           <Key>
             <PropertyRef Name="bakery_id" />
@@ -68,7 +68,7 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="Хранилище PrakticaModelContainer">
+        <EntityContainer Name="Хранилище PrakticaModel1Container">
           <EntitySet Name="Bakery" EntityType="Self.Bakery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Delivery" EntityType="Self.Delivery" Schema="dbo" store:Type="Tables" />
           <EntitySet Name="Product" EntityType="Self.Product" Schema="dbo" store:Type="Tables" />
@@ -82,10 +82,11 @@
             <End Role="Product" EntitySet="Product" />
           </AssociationSet>
         </EntityContainer>
-      </Schema></edmx:StorageModels>
+      </Schema>
+    </edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
-      <Schema Namespace="PrakticaModel" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
+      <Schema Namespace="PrakticaModel1" Alias="Self" annotation:UseStrongSpatialTypes="false" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns:customannotation="http://schemas.microsoft.com/ado/2013/11/edm/customannotation" xmlns="http://schemas.microsoft.com/ado/2009/11/edm">
         <EntityType Name="Bakery">
           <Key>
             <PropertyRef Name="bakery_id" />
@@ -119,6 +120,16 @@
           <NavigationProperty Name="Bakery" Relationship="Self.FK__Product__bakery___398D8EEE" FromRole="Product" ToRole="Bakery" />
           <NavigationProperty Name="Delivery" Relationship="Self.FK__Delivery__produc__3C69FB99" FromRole="Product" ToRole="Delivery" />
         </EntityType>
+        <EntityType Name="sysdiagrams">
+          <Key>
+            <PropertyRef Name="diagram_id" />
+          </Key>
+          <Property Name="name" Type="String" MaxLength="128" FixedLength="false" Unicode="true" Nullable="false" />
+          <Property Name="principal_id" Type="Int32" Nullable="false" />
+          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="version" Type="Int32" />
+          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
+        </EntityType>
         <Association Name="FK__Product__bakery___398D8EEE">
           <End Role="Bakery" Type="Self.Bakery" Multiplicity="0..1" />
           <End Role="Product" Type="Self.Product" Multiplicity="*" />
@@ -143,10 +154,11 @@
             </Dependent>
           </ReferentialConstraint>
         </Association>
-        <EntityContainer Name="PrakticaEntities" annotation:LazyLoadingEnabled="true">
+        <EntityContainer Name="PrakticaEntities1" annotation:LazyLoadingEnabled="true">
           <EntitySet Name="Bakery" EntityType="Self.Bakery" />
           <EntitySet Name="Delivery" EntityType="Self.Delivery" />
           <EntitySet Name="Product" EntityType="Self.Product" />
+          <EntitySet Name="sysdiagrams" EntityType="Self.sysdiagrams" />
           <AssociationSet Name="FK__Product__bakery___398D8EEE" Association="Self.FK__Product__bakery___398D8EEE">
             <End Role="Bakery" EntitySet="Bakery" />
             <End Role="Product" EntitySet="Product" />
@@ -155,26 +167,15 @@
             <End Role="Product" EntitySet="Product" />
             <End Role="Delivery" EntitySet="Delivery" />
           </AssociationSet>
-          <EntitySet Name="sysdiagrams" EntityType="PrakticaModel.sysdiagrams" />
         </EntityContainer>
-        <EntityType Name="sysdiagrams">
-          <Key>
-            <PropertyRef Name="diagram_id" />
-          </Key>
-          <Property Name="name" Type="String" Nullable="false" MaxLength="128" FixedLength="false" Unicode="true" />
-          <Property Name="principal_id" Type="Int32" Nullable="false" />
-          <Property Name="diagram_id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="version" Type="Int32" />
-          <Property Name="definition" Type="Binary" MaxLength="Max" FixedLength="false" />
-        </EntityType>
       </Schema>
     </edmx:ConceptualModels>
     <!-- C-S mapping content -->
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2009/11/mapping/cs">
-        <EntityContainerMapping StorageEntityContainer="Хранилище PrakticaModelContainer" CdmEntityContainer="PrakticaEntities">
+        <EntityContainerMapping StorageEntityContainer="Хранилище PrakticaModel1Container" CdmEntityContainer="PrakticaEntities1">
           <EntitySetMapping Name="Bakery">
-            <EntityTypeMapping TypeName="PrakticaModel.Bakery">
+            <EntityTypeMapping TypeName="PrakticaModel1.Bakery">
               <MappingFragment StoreEntitySet="Bakery">
                 <ScalarProperty Name="bakery_id" ColumnName="bakery_id" />
                 <ScalarProperty Name="bakeryName" ColumnName="bakeryName" />
@@ -184,7 +185,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Delivery">
-            <EntityTypeMapping TypeName="PrakticaModel.Delivery">
+            <EntityTypeMapping TypeName="PrakticaModel1.Delivery">
               <MappingFragment StoreEntitySet="Delivery">
                 <ScalarProperty Name="delivery_id" ColumnName="delivery_id" />
                 <ScalarProperty Name="deliveryDate" ColumnName="deliveryDate" />
@@ -195,7 +196,7 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="Product">
-            <EntityTypeMapping TypeName="PrakticaModel.Product">
+            <EntityTypeMapping TypeName="PrakticaModel1.Product">
               <MappingFragment StoreEntitySet="Product">
                 <ScalarProperty Name="product_id" ColumnName="product_id" />
                 <ScalarProperty Name="productName" ColumnName="productName" />
@@ -206,13 +207,13 @@
             </EntityTypeMapping>
           </EntitySetMapping>
           <EntitySetMapping Name="sysdiagrams">
-            <EntityTypeMapping TypeName="PrakticaModel.sysdiagrams">
+            <EntityTypeMapping TypeName="PrakticaModel1.sysdiagrams">
               <MappingFragment StoreEntitySet="sysdiagrams">
-                <ScalarProperty Name="definition" ColumnName="definition" />
-                <ScalarProperty Name="version" ColumnName="version" />
-                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
-                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
                 <ScalarProperty Name="name" ColumnName="name" />
+                <ScalarProperty Name="principal_id" ColumnName="principal_id" />
+                <ScalarProperty Name="diagram_id" ColumnName="diagram_id" />
+                <ScalarProperty Name="version" ColumnName="version" />
+                <ScalarProperty Name="definition" ColumnName="definition" />
               </MappingFragment>
             </EntityTypeMapping>
           </EntitySetMapping>

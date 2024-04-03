@@ -23,6 +23,8 @@ namespace prak1
         {
             InitializeComponent();
             DeliveryDgr.ItemsSource = context.Delivery.ToList();
+            NameTbx4.ItemsSource = context.Product.ToList();
+            NameTbx4.SelectedIndex = 0;
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
@@ -30,33 +32,106 @@ namespace prak1
             mainWindow.Show();
             Window.GetWindow(this).Close();
         }
-        private void Button_Click1(object sender, RoutedEventArgs e)
+        private void Button_Click_1(object sender, RoutedEventArgs e)
         {
-            Delivery c = new Delivery();
+            DeliveryDgr.ItemsSource = context.Delivery.ToList().Where(item => item.deliveryAddress.Contains(Searchtxt.Text));
 
-            context.Delivery.Add(c);
-
-            context.SaveChanges();
-            DeliveryDgr.ItemsSource = context.Delivery.ToList();
         }
 
-        private void Button_Click2(object sender, RoutedEventArgs e)
+        private void bakeryCbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
         {
-            if (DeliveryDgr.SelectedItem != null)
+            if (deliveryCbx.SelectedItem != null)
             {
-                var selected = DeliveryDgr.SelectedItem as Delivery;
+                var selectedDelivery = deliveryCbx.SelectedItem as Delivery;
+                var selectedDeliveryAddress = selectedDelivery.deliveryAddress;
+                DeliveryDgr.ItemsSource = context.Delivery.ToList().Where(item => item.deliveryAddress == selectedDeliveryAddress);
 
-                selected.deliveryAddress = NameTbx1.Text;
-                context.SaveChanges();
-                DeliveryDgr.ItemsSource = context.Delivery.ToList();
             }
         }
 
-        private void Button_Click3(object sender, RoutedEventArgs e)
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            DeliveryDgr.ItemsSource = context.Delivery.ToList();
+        }
+
+        private void Button_Click_3(object sender, RoutedEventArgs e)
+        {
+            DateTime deliveryDate;
+            int quantity;
+
+            // Преобразование даты
+            if (DateTime.TryParse(NameTbx1.Text, out deliveryDate))
+            {
+                // Преобразование количества
+                if (int.TryParse(NameTbx2.Text, out quantity))
+                {
+                    var newDelivery = new Delivery
+                    {
+                        deliveryDate = deliveryDate,
+                        quantity = quantity,
+                        deliveryAddress = NameTbx3.Text,
+                        product_id = (int)NameTbx4.SelectedValue
+                    };
+
+                    context.Delivery.Add(newDelivery);
+                    context.SaveChanges();
+                    DeliveryDgr.ItemsSource = context.Product.ToList();
+                }
+                else
+                {
+                    // Сообщаем пользователю, что введено некорректное количество
+                    MessageBox.Show("Введите корректное количество.");
+                }
+            }
+            else
+            {
+                // Сообщаем пользователю, что введена некорректная дата
+                MessageBox.Show("Введите корректную дату.");
+            }
+        }
+
+        private void Button_Click_4(object sender, RoutedEventArgs e)
+        {
+            DateTime deliveryDate;
+            int quantity;
+
+            // Преобразование даты
+            if (DateTime.TryParse(NameTbx1.Text, out deliveryDate))
+            {
+                // Преобразование количества
+                if (int.TryParse(NameTbx2.Text, out quantity))
+                {
+                    if (DeliveryDgr.SelectedItem != null)
+                    {
+                        var selectedDelivery = DeliveryDgr.SelectedItem as Delivery;
+                        selectedDelivery.deliveryDate = deliveryDate;
+                        selectedDelivery.quantity = quantity;
+                        selectedDelivery.deliveryAddress = NameTbx3.Text;
+                        selectedDelivery.product_id = (int)NameTbx4.SelectedValue;
+
+                        context.SaveChanges();
+                        DeliveryDgr.Items.Refresh();
+                    }
+                    else
+                    {
+                        // Сообщаем пользователю, что введено некорректное количество
+                        MessageBox.Show("Введите корректное количество.");
+                    }
+                }
+                else
+                {
+                    // Сообщаем пользователю, что введена некорректная дата
+                    MessageBox.Show("Введите корректную дату.");
+                }
+            }
+        }
+
+        private void Button_Click_5(object sender, RoutedEventArgs e)
         {
             if (DeliveryDgr.SelectedItem != null)
             {
-                context.Delivery.Remove(DeliveryDgr.SelectedItem as Delivery);
+                var selectedDelivery = DeliveryDgr.SelectedItem as Delivery;
+                context.Delivery.Remove(selectedDelivery);
                 context.SaveChanges();
                 DeliveryDgr.ItemsSource = context.Delivery.ToList();
             }
@@ -66,10 +141,18 @@ namespace prak1
         {
             if (DeliveryDgr.SelectedItem != null)
             {
-                var selected = DeliveryDgr.SelectedItem as Delivery;
+                var selectedDelivery = DeliveryDgr.SelectedItem as Delivery;
+                NameTbx1.Text = selectedDelivery.deliveryDate.ToString();
+                NameTbx2.Text = selectedDelivery.quantity.ToString();
+                NameTbx3.Text = selectedDelivery.deliveryAddress;
 
-                NameTbx1.Text = selected.deliveryAddress;
+                Product selectedProduct = context.Product.FirstOrDefault(c => c.product_id == selectedDelivery.product_id);
+                if (selectedProduct != null)
+                {
+                    NameTbx4.SelectedItem = selectedProduct;
+                }
             }
         }
     }
+    
 }

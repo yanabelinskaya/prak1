@@ -28,6 +28,6 @@ namespace prak1
     
         public virtual Bakery Bakery { get; set; }
         [System.Diagnostics.CodeAnalysis.SuppressMessage("Microsoft.Usage", "CA2227:CollectionPropertiesShouldBeReadOnly")]
-        public virtual ICollection<Delivery> Delivery { private get; set; }
+        public virtual ICollection<Delivery> Delivery { get; set; }
     }
 }

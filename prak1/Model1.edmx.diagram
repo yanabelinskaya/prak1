@@ -10,6 +10,7 @@
         <EntityTypeShape EntityType="PrakticaModel.Product" Width="1.5" PointX="3" PointY="1" IsExpanded="true" />
         <AssociationConnector Association="PrakticaModel.FK__Product__bakery___398D8EEE" ManuallyRouted="false" />
         <AssociationConnector Association="PrakticaModel.FK__Delivery__produc__3C69FB99" ManuallyRouted="false" />
+        <EntityTypeShape EntityType="PrakticaModel.sysdiagrams" Width="1.5" PointX="0.75" PointY="4.75" />
       </Diagram>
     </edmx:Diagrams>
   </edmx:Designer>

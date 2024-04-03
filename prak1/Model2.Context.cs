@@ -13,10 +13,10 @@ namespace prak1
     using System.Data.Entity;
     using System.Data.Entity.Infrastructure;
     
-    public partial class PrakticaEntities : DbContext
+    public partial class PrakticaEntities1 : DbContext
     {
-        public PrakticaEntities()
-            : base("name=PrakticaEntities")
+        public PrakticaEntities1()
+            : base("name=PrakticaEntities1")
         {
         }
     

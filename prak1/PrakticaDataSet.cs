@@ -4,6 +4,9 @@
 
     partial class PrakticaDataSet
     {
+        partial class BakeryDataTable
+        {
+        }
     }
 }
 

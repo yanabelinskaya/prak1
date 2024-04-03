@@ -33,5 +33,16 @@ namespace prak1.Properties {
                 return ((string)(this["PrakticaConnectionString"]));
             }
         }
+        
+        [global::System.Configuration.ApplicationScopedSettingAttribute()]
+        [global::System.Diagnostics.DebuggerNonUserCodeAttribute()]
+        [global::System.Configuration.SpecialSettingAttribute(global::System.Configuration.SpecialSetting.ConnectionString)]
+        [global::System.Configuration.DefaultSettingValueAttribute("Data Source=DESKTOP-6435JQ5\\SQLEXPRESS;Initial Catalog=Prakticaa;Integrated Secur" +
+            "ity=True;TrustServerCertificate=True")]
+        public string PrakticaaConnectionString {
+            get {
+                return ((string)(this["PrakticaaConnectionString"]));
+            }
+        }
     }
 }

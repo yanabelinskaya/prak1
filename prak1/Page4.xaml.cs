@@ -31,27 +31,53 @@ namespace prak1
             Window.GetWindow(this).Close();
         }
 
+
+        private void Button_Click_1(object sender, RoutedEventArgs e)
+        {
+            BakeryDgr.ItemsSource = context.Bakery.ToList().Where(item => item.bakeryName.Contains(Searchtxt.Text));
+        }
+
+        private void bakeryCbx_SelectionChanged(object sender, SelectionChangedEventArgs e)
+        {
+            if (bakeryCbx.SelectedItem != null)
+            {
+                var selectedBakery = bakeryCbx.SelectedItem as Bakery;
+                var selectedBakeryName = selectedBakery.bakeryName;
+                BakeryDgr.ItemsSource = context.Bakery.ToList().Where(item => item.bakeryName == selectedBakeryName);
+
+            }
+        }
+
+        private void Button_Click_2(object sender, RoutedEventArgs e)
+        {
+            BakeryDgr.ItemsSource = context.Bakery.ToList();
+        }
+
         private void Button_Click1(object sender, RoutedEventArgs e)
         {
-            Bakery c = new Bakery();
-            c.bakeryName = NameTbx1.Text;
-
-            context.Bakery.Add(c);
-
+            var newBakery = new Bakery
+            {
+                bakeryName = NameTbx1.Text,
+                bakeryAddress = NameTbx2.Text,
+                rating = decimal.Parse(NameTbx3.Text),
+            };
+            context.Bakery.Add(newBakery);
             context.SaveChanges();
             BakeryDgr.ItemsSource = context.Bakery.ToList();
         }
 
         private void Button_Click2(object sender, RoutedEventArgs e)
         {
-            if (BakeryDgr.SelectedItem != null)
-            {
-                var selected = BakeryDgr.SelectedItem as Bakery;
+            if(BakeryDgr.SelectedItem != null) 
+            { 
+                var selectedBakery = BakeryDgr.SelectedItem as Bakery;
+                selectedBakery.bakeryName = NameTbx1.Text;
+                selectedBakery.bakeryAddress = NameTbx2.Text;
+                selectedBakery.rating = decimal.Parse(NameTbx3.Text);
 
-                selected.bakeryName = NameTbx1.Text;
-       
                 context.SaveChanges();
-                BakeryDgr.ItemsSource = context.Bakery.ToList();
+                BakeryDgr.Items.Refresh();
+
             }
         }
 
@@ -59,10 +85,11 @@ namespace prak1
         {
             if (BakeryDgr.SelectedItem != null)
             {
-                context.Bakery.Remove(BakeryDgr.SelectedItem as Bakery);
-
+                var selectedBakery = BakeryDgr.SelectedItem as Bakery;
+                context.Bakery.Remove(selectedBakery);
                 context.SaveChanges();
                 BakeryDgr.ItemsSource = context.Bakery.ToList();
+
             }
         }
 
@@ -70,11 +97,11 @@ namespace prak1
         {
             if (BakeryDgr.SelectedItem != null)
             {
-                var selected = BakeryDgr.SelectedItem as Bakery;
-
-                NameTbx1.Text = selected.bakeryName;
+                var selectedBakery = BakeryDgr.SelectedItem as Bakery;
+                NameTbx1.Text = selectedBakery.bakeryName.ToString();
+                NameTbx2.Text = selectedBakery.bakeryAddress.ToString();
+                NameTbx3.Text = selectedBakery.rating.ToString();
             }
         }
-
     }
 }

@@ -6,23 +6,34 @@
       xmlns:local="clr-namespace:prak1"
       mc:Ignorable="d" 
       d:DesignHeight="320" d:DesignWidth="800"
-      Title="Page4">
+      Title="Page1">
 
     <Grid Background="#FFFFFEFE">
-       
         <Grid.RowDefinitions>
             <RowDefinition Height="Auto"/>
-            <RowDefinition Height="*"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
+            <RowDefinition Height="Auto"/>
         </Grid.RowDefinitions>
-        <DataGrid x:Name="BakeryDgr" Height="200" VerticalAlignment="Top" SelectionChanged="BakeryDgr_SelectionChanged" />
-        <TextBox x:Name="NameTbx1" Height="30" Text="BakeryName" Grid.Row="1" Margin="0,0,0,10" VerticalAlignment="Top"/>
+        <DataGrid x:Name="BakeryDgr" Height="200" Grid.Row="0" SelectionChanged="BakeryDgr_SelectionChanged"/>
+
+        <TextBox x:Name="NameTbx1" Height="20" Width="250" HorizontalAlignment="Left" Text="BakeryName" Grid.Row="1" Margin="0,0,0,5" VerticalAlignment="Top"/>
+        <TextBox x:Name="NameTbx2" Height="20" Width="250" HorizontalAlignment="Center" Text="BakeryAddress" Grid.Row="1" Margin="0,0,0,5" VerticalAlignment="Top"/>
+        <TextBox x:Name="NameTbx3" Height="20" Width="250" HorizontalAlignment="Right" Text="Rating" Grid.Row="1" Margin="0,0,0,5" VerticalAlignment="Top"/>
+
+        <TextBox x:Name="Searchtxt" Text="Поиск по названию пекарни" Grid.Row="2" Width="300" HorizontalAlignment="Left" Margin="0,5,0,0" Foreground="#FF9B9B9B" />
+        <Button Content="Поиск" Grid.Row="2" Width="112" Height="20" HorizontalAlignment="Left" Background="#FFB24242" Foreground="White" Click="Button_Click_1" Margin="305,5,0,0" />
+
+        <ComboBox DisplayMemberPath="bakeryName" x:Name="bakeryCbx" Grid.Row="2" Width="220" HorizontalAlignment="Left" Margin="422,5,0,0" SelectionChanged="bakeryCbx_SelectionChanged" Height="22" Grid.RowSpan="2" VerticalAlignment="Top" />
+        <Button Content="Очистить" Grid.Row="2" Width="112" Height="20" HorizontalAlignment="Right" Background="#FFB24242" Foreground="White"  Margin="0,5,10,0" Click="Button_Click_2" />
 
         <!-- Кнопки -->
-        <StackPanel Grid.Row="1" Orientation="Horizontal" VerticalAlignment="Bottom">
-            <Button Content="Назад" Width="113" FontSize="24" Background="#FFB24242" Foreground="#FFE2D7D7" Margin="5" Click="Button_Click"/>
-            <Button Content="Добавление данных" Width="179" FontSize="14" Background="#FFB24242" Foreground="#FFE2D7D7" Margin="5" />
-            <Button Content="Изменение данных" Width="179" FontSize="14" Background="#FFB24242" Foreground="#FFE2D7D7" Margin="5" />
-            <Button Content="Удаление данных" Width="179" FontSize="14" Background="#FFB24242" Foreground="#FFE2D7D7" Margin="5"/>
+        <StackPanel Grid.Row="3" Orientation="Horizontal" VerticalAlignment="Bottom" Margin="10">
+            <Button Content="Назад" Width="113" FontSize="24" Background="#FFB24242" Foreground="#FFE2D7D7" Click="Button_Click"/>
+            <Button Content="Добавление данных" Width="179" FontSize="14" Background="#FFB24242" Foreground="#FFE2D7D7" Margin="10" Click="Button_Click1" />
+            <Button Content="Изменение данных" Width="179" FontSize="14" Background="#FFB24242" Foreground="#FFE2D7D7" Margin="10" Click="Button_Click2"/>
+            <Button Content="Удаление данных" Width="179" FontSize="14" Background="#FFB24242" Foreground="#FFE2D7D7" Margin="10" Click="Button_Click3"/>
         </StackPanel>
     </Grid>
 </Page>

@@ -30,6 +30,16 @@ namespace prak1
             ProductDgr.Columns[4].Visibility = Visibility.Collapsed;
             ProductDgr.Columns[8].Visibility = Visibility.Collapsed;
             ProductDgr.Columns[12].Visibility = Visibility.Collapsed;
+
+            ProductDgr.Columns[1].Header = "Название продукта";
+            ProductDgr.Columns[2].Header = "Описание продукта";
+            ProductDgr.Columns[3].Header = "Цена";
+            ProductDgr.Columns[5].Header = "Название пекарни";
+            ProductDgr.Columns[6].Header = "Адрес пекарни";
+            ProductDgr.Columns[7].Header = "Рейтинг пекарни";
+            ProductDgr.Columns[9].Header = "Дата доставки";
+            ProductDgr.Columns[10].Header = "Адрес доставки";
+            ProductDgr.Columns[11].Header = "Количество";
         }
         private void Button_Click(object sender, RoutedEventArgs e)
         {
